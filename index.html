@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atlas — Crime & Case Graph Intelligence</title>
+<title>Crimelens — Crime & Case Graph Intelligence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -402,7 +402,7 @@ tbody tr:hover td { color: var(--text); }
         </svg>
       </div>
       <div>
-        <div class="brand-name">Atlas</div>
+        <div class="brand-name">Crimelens</div>
         <div class="brand-sub">Graph Intelligence</div>
       </div>
     </div>
@@ -473,20 +473,20 @@ tbody tr:hover td { color: var(--text); }
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 <script>
 /* =========================================================
-   Atlas — Crime & Case Graph Intelligence
+   Crimelens — Crime & Case Graph Intelligence
    High-Performance Forensic Investigation Dashboard
    ========================================================= */
 
 // ---------- Theme Manager ----------
 function getInitialTheme() {
-  const saved = localStorage.getItem('atlas_theme');
+  const saved = localStorage.getItem('crimelens_theme');
   if (saved) return saved;
   return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
 }
 
 function applyTheme(theme) {
   document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem('atlas_theme', theme);
+  localStorage.setItem('crimelens_theme', theme);
   updateThemeIcons(theme);
 }
 
@@ -837,7 +837,7 @@ function getNodeLevel(labels) {
 
 function getDeterministicSeed(str) {
   let hash = 42;
-  const s = String(str || 'atlas_seed');
+  const s = String(str || 'crimelens_seed');
   for (let i = 0; i < s.length; i++) {
     hash = ((hash << 5) - hash) + s.charCodeAt(i);
     hash |= 0;
@@ -934,7 +934,7 @@ function graphView() {
           <div class="ai-msg bot">
             <div class="ai-msg-hdr">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></svg>
-              <span>Atlas Graph Assistant</span>
+              <span>Crimelens Graph Assistant</span>
             </div>
             <div>Can't get inferences from this visual topology? Ask me directly to identify key operatives, money flows, or hidden links.</div>
             <div class="ai-quick-chips">
@@ -1195,8 +1195,8 @@ function renderGraph() {
     layoutOpts.improvedLayout = true;
     physicsOpts = {
       enabled: state.physicsEnabled !== false,
-      solver: 'forceAtlas2Based',
-      forceAtlas2Based: {
+      solver: 'forceCrimelens2Based',
+      forceCrimelens2Based: {
         gravitationalConstant: -70,
         centralGravity: 0.04,
         springLength: 150,
@@ -1207,12 +1207,12 @@ function renderGraph() {
       stabilization: { iterations: 160 }
     };
   } else {
-    // 'structured' (Default - Smooth Elastic ForceAtlas2 with Reduced Bounce)
+    // 'structured' (Default - Smooth Elastic ForceCrimelens2 with Reduced Bounce)
     layoutOpts.improvedLayout = true;
     physicsOpts = {
       enabled: state.physicsEnabled !== false,
-      solver: 'forceAtlas2Based',
-      forceAtlas2Based: {
+      solver: 'forceCrimelens2Based',
+      forceCrimelens2Based: {
         gravitationalConstant: -55,
         centralGravity: 0.015,
         springLength: 160,
@@ -2432,8 +2432,8 @@ async function loadCaseGraph(id) {
     new vis.Network(container, data, {
       layout: { randomSeed: seed, improvedLayout: true },
       physics: {
-        solver: 'forceAtlas2Based',
-        forceAtlas2Based: {
+        solver: 'forceCrimelens2Based',
+        forceCrimelens2Based: {
           gravitationalConstant: -55,
           centralGravity: 0.015,
           springLength: 150,
